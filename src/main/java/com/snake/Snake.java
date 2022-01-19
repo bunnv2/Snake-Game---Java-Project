@@ -6,6 +6,8 @@ import java.awt.*;
 public class Snake {
     private ArrayList<Rectangle> snake;
 
+    private String direction; // UP, DOWN, LEFT, RIGHT, NONE
+
     public Snake() {
         snake = new ArrayList<Rectangle>();
 
@@ -20,6 +22,8 @@ public class Snake {
         temp = new Rectangle(Game.SCALE, Game.SCALE);
         temp.setLocation((Game.WIDTH / 2 - 2) * Game.SCALE, (Game.HEIGHT / 2 - 2) * Game.SCALE);
         snake.add(temp);
+
+        direction = "NONE";
     }
 
     public ArrayList<Rectangle> getSnake() {
@@ -28,5 +32,21 @@ public class Snake {
 
     public void setSnake(ArrayList<Rectangle> snake) {
         this.snake = snake;
+    }
+
+    public void up() {
+        direction = "UP";
+    }
+
+    public void down() {
+        direction = "DOWN";
+    }
+
+    public void left() {
+        direction = "LEFT";
+    }
+
+    public void right() {
+        direction = "RIGHT";
     }
 }
