@@ -11,11 +11,14 @@ public class Food {
     }
 
     public void randomize(Snake snake) {
-        x = (int) (Math.random() * Game.WIDTH);
-        y = (int) (Math.random() * Game.HEIGHT);
-        boolean collision = false;
+        boolean collision = true;
 
-        while (!collision) {
+        while (collision) {
+            collision = false;
+
+            x = (int) (Math.random() * Game.WIDTH);
+            y = (int) (Math.random() * Game.HEIGHT);
+
             for (Rectangle rect : snake.getSnake()) {
                 if (rect.getX() == x * Game.SCALE && rect.getY() == y * Game.SCALE) {
                     collision = true;
@@ -29,4 +32,21 @@ public class Food {
             }
         }
     }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
 }

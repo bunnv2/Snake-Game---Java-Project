@@ -2,7 +2,6 @@ package com.snake;
 
 import java.util.*;
 import java.awt.*;
-import javax.swing.*;
 
 public class Snake {
     private ArrayList<Rectangle> snake;
@@ -17,11 +16,11 @@ public class Snake {
         snake.add(temp);
 
         temp = new Rectangle(Game.SCALE, Game.SCALE);
-        temp.setLocation((Game.WIDTH / 2 - 1) * Game.SCALE, (Game.HEIGHT / 2 - 1) * Game.SCALE);
+        temp.setLocation((Game.WIDTH / 2 - 1) * Game.SCALE, (Game.HEIGHT / 2) * Game.SCALE);
         snake.add(temp);
 
         temp = new Rectangle(Game.SCALE, Game.SCALE);
-        temp.setLocation((Game.WIDTH / 2 - 2) * Game.SCALE, (Game.HEIGHT / 2 - 2) * Game.SCALE);
+        temp.setLocation((Game.WIDTH / 2 - 2) * Game.SCALE, (Game.HEIGHT / 2) * Game.SCALE);
         snake.add(temp);
 
         direction = "NONE";
@@ -64,6 +63,24 @@ public class Snake {
         snake.add(0, temp);
     }
 
+    public void reset() {
+        snake.clear();
+
+        Rectangle temp = new Rectangle(Game.SCALE, Game.SCALE);
+        temp.setLocation((Game.WIDTH / 2) * Game.SCALE, (Game.HEIGHT / 2) * Game.SCALE);
+        snake.add(temp);
+
+        temp = new Rectangle(Game.SCALE, Game.SCALE);
+        temp.setLocation((Game.WIDTH / 2 - 1) * Game.SCALE, (Game.HEIGHT / 2) * Game.SCALE);
+        snake.add(temp);
+
+        temp = new Rectangle(Game.SCALE, Game.SCALE);
+        temp.setLocation((Game.WIDTH / 2 - 2) * Game.SCALE, (Game.HEIGHT / 2) * Game.SCALE);
+        snake.add(temp);
+
+        direction = "NONE";
+    }
+
     public ArrayList<Rectangle> getSnake() {
         return snake;
     }
@@ -72,19 +89,35 @@ public class Snake {
         this.snake = snake;
     }
 
+    public int getX() {
+        return snake.get(0).x;
+    }
+
+    public int getY() {
+        return snake.get(0).y;
+    }
+
     public void up() {
-        direction = "UP";
+        if (direction != "DOWN") {
+            direction = "UP";
+        }
     }
 
     public void down() {
-        direction = "DOWN";
+        if (direction != "UP") {
+            direction = "DOWN";
+        }
     }
 
     public void left() {
-        direction = "LEFT";
+        if (direction != "RIGHT") {
+            direction = "LEFT";
+        }
     }
 
     public void right() {
-        direction = "RIGHT";
+        if (direction != "LEFT") {
+            direction = "RIGHT";
+        }
     }
 }
